@@ -1,5 +1,6 @@
 from playwright.sync_api import sync_playwright
-from og_parser import parse_og
+
+from app.parsing.og import parse_og
 
 
 class DynamicCrawlError(Exception):
@@ -12,7 +13,7 @@ def dynamic_crawl(url: str):
             browser = p.chromium.launch(headless=True)
             page = browser.new_page()
 
-            page.goto(url,wait_until="domcontentloaded", timeout=15000)
+            page.goto(url, wait_until="domcontentloaded", timeout=15000)
             page.wait_for_load_state("networkidle")
 
             html = page.content()

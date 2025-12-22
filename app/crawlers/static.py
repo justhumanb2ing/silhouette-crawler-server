@@ -1,5 +1,6 @@
 import requests
-from og_parser import parse_og
+
+from app.parsing.og import parse_og
 
 
 class StaticCrawlError(Exception):

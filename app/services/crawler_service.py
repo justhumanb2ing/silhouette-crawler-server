@@ -1,7 +1,7 @@
-from static_crawler import static_crawl, StaticCrawlError
-from dynamic_crawler import dynamic_crawl
-from og_validator import is_static_og_valid
-from strategy_cache import (
+from app.crawlers.dynamic import dynamic_crawl
+from app.crawlers.static import static_crawl, StaticCrawlError
+from app.validation.og_valid import is_static_og_valid
+from app.cache.domain_cache import (
     get_strategy,
     set_strategy,
     CrawlStrategy,

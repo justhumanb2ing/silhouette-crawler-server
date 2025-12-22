@@ -33,12 +33,15 @@ RUN apt-get update && apt-get install -y \
 
 WORKDIR /app
 
+# ✅ requirements.txt 먼저 복사 (캐시 최적화)
 COPY requirements.txt .
-RUN pip install -r requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
 
-# 🔥 핵심
+# 🔥 핵심: Playwright 브라우저 설치
 RUN playwright install chromium
 
+# 앱 코드 복사
 COPY . .
 
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
+# FastAPI 실행
+CMD ["sh", "-c", "uvicorn app.main:app --host 0.0.0.0 --port ${PORT}"]

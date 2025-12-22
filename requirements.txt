@@ -3,3 +3,8 @@ uvicorn
 requests
 beautifulsoup4
 playwright
+
+# Clerk 인증용 추가
+clerk-backend-api
+httpx
+python-dotenv
