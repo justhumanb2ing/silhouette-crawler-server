@@ -10,7 +10,11 @@ def is_signed_in(request: httpx.Request) -> bool:
     request_state = sdk.authenticate_request(
         request,
         AuthenticateRequestOptions(
-            authorized_parties=["https://silhouett-e.vercel.app", "http://localhost:5173"]
+            authorized_parties=[
+                "https://silhouett-e.vercel.app",
+                "http://localhost:5173",
+                "chrome-extension://fkjmjdcnncofaehiogknmoeghpcgobga",
+            ]
         )
     )
 
