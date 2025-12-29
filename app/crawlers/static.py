@@ -1,6 +1,7 @@
 import requests
 
 from app.parsing.og import parse_og
+from app.crawlers.proxy import get_requests_proxies
 
 
 class StaticCrawlError(Exception):
@@ -18,7 +19,12 @@ HEADERS = {
 
 def static_crawl(url: str):
     try:
-        res = requests.get(url, headers=HEADERS, timeout=8)
+        request_kwargs = {"headers": HEADERS, "timeout": 8}
+        proxies = get_requests_proxies()
+        if proxies:
+            request_kwargs["proxies"] = proxies
+
+        res = requests.get(url, **request_kwargs)
         if res.status_code >= 400:
             raise StaticCrawlError(f"HTTP {res.status_code}")
 

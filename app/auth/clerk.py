@@ -14,6 +14,7 @@ def is_signed_in(request: httpx.Request) -> bool:
                 "https://silhouett-e.vercel.app",
                 "http://localhost:5173",
                 "chrome-extension://fkjmjdcnncofaehiogknmoeghpcgobga",
+                "https://louogijoxoorskrvzvei.supabase.co"
             ]
         )
     )
